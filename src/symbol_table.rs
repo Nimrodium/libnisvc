@@ -26,21 +26,23 @@ impl SymbolTable {
     /// load a symbol table from serialized format
     pub fn deserialize(serialized: Bin) -> Result<Self, String> {
         let mut stream = serialized.into_iter();
-        loop {
-            let symbol = {
-                let str_len = stream.next().ok_or(EOF_SYMBOLTABLE_ERR)?;
-                let mut strb = Vec::<u8>::new();
-                // likely possible to collapse into a chain w. an iterator
-                for _ in 0..str_len {
-                    strb.push(stream.next().ok_or(EOF_SYMBOLTABLE_ERR)?);
-                }
-                String::try_from(strb)
-                    .map_err(|e| format!("Symbol contained illegal characters {e}"))?
-            };
-            let address = {
-                stream.
-            };
-        }
+        // loop {
+        //     let symbol = {
+        //         let str_len = stream.next().ok_or(EOF_SYMBOLTABLE_ERR)?;
+        //         let mut strb = Vec::<u8>::new();
+        //         // likely possible to collapse into a chain w. an iterator
+        //         for _ in 0..str_len {
+        //             strb.push(stream.next().ok_or(EOF_SYMBOLTABLE_ERR)?);
+        //         }
+        //         String::try_from(strb)
+        //             .map_err(|e| format!("Symbol contained illegal characters {e}"))?
+        //     };
+
+        //     let address = {
+        //         stream.
+
+        //     };
+        // }
         todo!()
     }
 

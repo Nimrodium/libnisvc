@@ -9,7 +9,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ac66a889db5ab98510dff09cd3a92a23653c7d3371f425788e60f651f9184346"
 
 [[package]]
-name = "nisvc-common"
+name = "libnisvc"
 version = "0.1.0"
 dependencies = [
  "bidirectional-map",
