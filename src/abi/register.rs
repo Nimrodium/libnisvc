@@ -42,26 +42,37 @@ pub const SEC: RegisterLength = 0b_0000_1111;
 pub const UNINIT: RegisterLength = 0xff;
 
 macro_rules! define_register {
-    (n:ident) => {
+    ($n:literal) => {
         paste! {
-                    pub const [<R $n B1>]: RegisterLength = R1 | B1;
-                    pub const [<R $n B2>]: RegisterLength = R1 | B2;
-                    pub const [<R $n B3>]: RegisterLength = R1 | B3;
-                    pub const [<R $n B4>]: RegisterLength = R1 | B4;
-                    pub const [<R $n B5>]: RegisterLength = R1 | B5;
-                    pub const [<R $n B6>]: RegisterLength = R1 | B6;
-                    pub const [<R $n B7>]: RegisterLength = R1 | B7;
-                    pub const [<R $n B8>]: RegisterLength = R1 | B8;
+            pub const [<R $n B1>]: RegisterLength = [<R $n>] | B1;
+            pub const [<R $n B2>]: RegisterLength = [<R $n>] | B2;
+            pub const [<R $n B3>]: RegisterLength = [<R $n>] | B3;
+            pub const [<R $n B4>]: RegisterLength = [<R $n>] | B4;
+            pub const [<R $n B5>]: RegisterLength = [<R $n>] | B5;
+            pub const [<R $n B6>]: RegisterLength = [<R $n>] | B6;
+            pub const [<R $n B7>]: RegisterLength = [<R $n>] | B7;
+            pub const [<R $n B8>]: RegisterLength = [<R $n>] | B8;
 
-                    pub const [<R $n Q1>]: RegisterLength = R1 | Q1;
-                    pub const [<R $n Q2>]: RegisterLength = R1 | Q2;
-                    pub const [<R $n Q3>]: RegisterLength = R1 | Q3;
-                    pub const [<R $n Q4>]: RegisterLength = R1 | Q4;
+            pub const [<R $n Q1>]: RegisterLength = [<R $n>] | Q1;
+            pub const [<R $n Q2>]: RegisterLength = [<R $n>] | Q2;
+            pub const [<R $n Q3>]: RegisterLength = [<R $n>] | Q3;
+            pub const [<R $n Q4>]: RegisterLength = [<R $n>] | Q4;
 
-                    pub const [<R $n L>]: RegisterLength = R1 | L;
-                    pub const [<R $n H>]: RegisterLength = R1 | H;
+            pub const [<R $n L>]: RegisterLength = [<R $n>] | L;
+            pub const [<R $n H>]: RegisterLength = [<R $n>] | H;
         }
     };
 }
 
-define_register!('1');
+define_register!(1);
+define_register!(2);
+define_register!(3);
+define_register!(4);
+define_register!(5);
+define_register!(6);
+define_register!(7);
+define_register!(8);
+define_register!(9);
+define_register!(10);
+define_register!(11);
+define_register!(12);
