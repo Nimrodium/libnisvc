@@ -12,6 +12,7 @@
 pub type Bin = Vec<u8>;
 mod abi;
 mod constant;
+mod err;
 mod nisvc_ef;
 mod symbol_table;
 pub fn add(left: u64, right: u64) -> u64 {

@@ -1,4 +1,5 @@
 use crate::Bin;
+use anyhow::Result;
 use bidirectional_map::Bimap;
 use std::{collections::HashMap, rc::Rc};
 /// Table for associating addresses with named symbols for debugging.
@@ -24,7 +25,7 @@ impl SymbolTable {
     }
 
     /// load a symbol table from serialized format
-    pub fn deserialize(serialized: Bin) -> Result<Self, String> {
+    pub fn deserialize(serialized: Bin) -> Result<Self> {
         let mut stream = serialized.into_iter();
         // loop {
         //     let symbol = {
@@ -47,7 +48,7 @@ impl SymbolTable {
     }
 
     /// serialize SymbolTable
-    pub fn serialize(&self) -> Result<Bin, String> {
+    pub fn serialize(&self) -> Result<Bin> {
         todo!()
     }
     /// get a symbol from an associated address
@@ -59,7 +60,7 @@ impl SymbolTable {
         todo!()
     }
     /// insert an address symbol pair
-    pub fn insert(&self, symbol: &str, address: &u64) -> Result<(), String> {
+    pub fn insert(&self, symbol: &str, address: &u64) -> Result<()> {
         todo!()
     }
 }

@@ -1,10 +1,10 @@
-use std::fs::File;
-use std::io::Read;
-use std::path::Path;
-
 use crate::Bin;
 use crate::constant::{MAGIC, SHEBANG};
 use crate::symbol_table::SymbolTable;
+use anyhow::{Result, anyhow};
+use std::fs::File;
+use std::io::Read;
+use std::path::Path;
 /// Standard Executable Format for the NISVC Architecture.
 /// Unlike ELF or PE this file format is relatively simple. and does not support linking.
 /// a NISVC-EF file is split into 3 main sections:
@@ -30,11 +30,11 @@ impl NISVCExecutableFormat {
         }
     }
 
-    pub fn load(file: &Path) -> Result<Self, String> {
+    pub fn load(file: &Path) -> Result<Self> {
         let mut bin: Bin = Bin::new();
         File::open(file)
-            .map_err(|e| format!("failed to open file: {e}"))?
-            .read_to_end(&mut bin);
+            .map_err(|e| anyhow!("failed to open file: {e}"))?
+            .read_to_end(&mut bin)?;
         if bin[0..1] == *b"#!" {
             let shebang_length = bin
                 .iter()
@@ -46,7 +46,7 @@ impl NISVCExecutableFormat {
     }
 
     /// builds the NISVC-EF into file
-    pub fn build(self, include_shebang: bool, nisvc_version: &str) -> Result<Bin, String> {
+    pub fn build(self, include_shebang: bool, nisvc_version: &str) -> Result<Bin> {
         // todo!()
         let mut bin = Bin::new();
         if include_shebang {
